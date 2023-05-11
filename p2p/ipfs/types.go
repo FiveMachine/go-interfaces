@@ -6,6 +6,8 @@ import (
 
 	"github.com/ipfs/go-cid"
 	blockstore "github.com/ipfs/go-ipfs-blockstore"
+
+	// "github.com/ipfs/go-ipld-format"
 	ipld "github.com/ipfs/go-ipld-format"
 	ufsio "github.com/ipfs/go-unixfs/io"
 	"github.com/libp2p/go-libp2p-core/peer"
@@ -33,6 +35,29 @@ type Peer interface {
 	// HasBlock returns whether a given block is available locally. It is
 	// a shorthand for .Blockstore().Has().
 	HasBlock(c cid.Cid) (bool, error)
+	// Remove removes a node from this DAG.
+	// Remove returns no error if the requested node is not present in this DAG.
+	Remove(context.Context, cid.Cid) error
+	// RemoveMany removes many nodes from this DAG.
+	//
+	// It returns success even if the nodes were not present in the DAG.
+	RemoveMany(context.Context, []cid.Cid) error
+
+	// Add adds a node to this DAG.
+	Add(context.Context, ipld.Node) error
+	// AddMany adds many nodes to this DAG.
+	//
+	// Consider using the Batch NodeAdder (`NewBatch`) if you make
+	// extensive use of this function.
+	AddMany(context.Context, []ipld.Node) error
+
+	// Get retrieves nodes by CID. Depending on the NodeGetter
+	// implementation, this may involve fetching the Node from a remote
+	// machine; consider setting a deadline in the context.
+	Get(context.Context, cid.Cid) (ipld.Node, error)
+
+	// GetMany returns a channel of NodeOptions given a set of CIDs.
+	GetMany(context.Context, []cid.Cid) <-chan *ipld.NodeOption
 }
 
 // AddParams contains all of the configurable parameters needed to specify the

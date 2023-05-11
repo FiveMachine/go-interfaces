@@ -1,6 +1,7 @@
 package common
 
 import (
+	"github.com/taubyte/go-interfaces/vm"
 	structureSpec "github.com/taubyte/go-specs/structure"
 )
 
@@ -22,9 +23,9 @@ type FunctionInstance interface {
 	// Function returns the parent Function interface
 	Function() Function
 	// Instantiate returns a runtime, and plugin used to initialize and call the Function
-	Instantiate() (sdkPlugin interface{}, err error)
+	Instantiate() (instance vm.Instance, sdkPlugin interface{}, err error)
 	// Call will call the Function on the runtime, with an injected parameter of the event id
-	Call(id interface{}) error
+	Call(instance vm.Instance, id interface{}) error
 	// Close will close the FunctionInstance
 	Close()
 	// Name returns the name of the Function

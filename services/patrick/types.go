@@ -1,5 +1,20 @@
 package patrick
 
+import "sync"
+
+type Job struct {
+	Id        string    `cbor:"1,keyasint"`
+	Timestamp int64     `cbor:"2,keyasint"`
+	Status    JobStatus `cbor:"3,keyasint"`
+	LogLock   sync.Mutex
+	Logs      map[string]string `cbor:"11,keyasint"` // Cid of logs
+	Meta      Meta              `cbor:"15,keyasint"`
+	CidLock   sync.Mutex
+	AssetCid  map[string]string `cbor:"20,keyasint"` // Build Cid
+	Attempt   int               `cbor:"30,keyasint"`
+	Delay     *DelayConfig      `cbor:"99,keyasint"` // Inject a delay to run a job
+}
+
 // TODO: optimize cbor storage
 type Meta struct {
 	Ref        string     `json:"ref" cbor:"4,keyasint"`
@@ -19,4 +34,8 @@ type Repository struct {
 	SSHURL     string `json:"ssh_url" cbor:"67,keyasint"`
 	Branch     string `json:"default_branch" cbor:"68,keyasint"`
 	MainBranch string `json:"master_branch" cbor:"69,keyasint"`
+}
+
+type DelayConfig struct {
+	Time int `cbor:"1,keyasint"` // Inject delay in second
 }
