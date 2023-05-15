@@ -8,8 +8,6 @@ replace bitbucket.org/taubyte/go-specs => ../go-specs
 
 // Taubyte Direct Imports
 require (
-	bitbucket.org/taubyte/http v0.3.0
-	bitbucket.org/taubyte/kvdb v0.2.1
 	bitbucket.org/taubyte/p2p v0.5.3
 	github.com/taubyte/go-simple-container v0.4.2
 	github.com/taubyte/go-specs v0.10.0
@@ -94,7 +92,6 @@ require (
 	github.com/ipfs/go-blockservice v0.5.0 // indirect
 	github.com/ipfs/go-cidutil v0.1.0 // indirect
 	github.com/ipfs/go-ds-badger v0.3.0 // indirect
-	github.com/ipfs/go-ds-crdt v0.3.10 // indirect
 	github.com/ipfs/go-ds-pebble v0.2.4 // indirect
 	github.com/ipfs/go-fetcher v1.6.1 // indirect
 	github.com/ipfs/go-ipfs-chunker v0.0.5 // indirect

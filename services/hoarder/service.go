@@ -7,6 +7,5 @@ import (
 
 type Service interface {
 	services.Service
-	Close()
 	Datastore() datastore.Batching
 }

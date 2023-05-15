@@ -3,17 +3,17 @@ package seer
 import (
 	"context"
 
-	http "bitbucket.org/taubyte/http"
-	kv "bitbucket.org/taubyte/kvdb/database"
+	"github.com/taubyte/go-interfaces/kvdb"
 	"github.com/taubyte/go-interfaces/services"
+	http "github.com/taubyte/http"
 )
 
 type Service interface {
 	services.Service
-	KV() *kv.KVDatabase
+	KV() kvdb.KVDB
 	Resolver() Resolver
-	GitHubTokenHTTPAuth(ctx *http.Context) (interface{}, error)
-	GitHubTokenHTTPAuthCleanup(ctx *http.Context) (interface{}, error)
+	GitHubTokenHTTPAuth(ctx http.Context) (interface{}, error)
+	GitHubTokenHTTPAuthCleanup(ctx http.Context) (interface{}, error)
 	ListNodes() ([]string, error)
 }
 

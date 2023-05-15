@@ -1,7 +1,3 @@
-bitbucket.org/taubyte/http v0.3.0 h1:8WYL4rkNBZ3+kE4PfZ/ZKoEvQdETy2qbPQiQSxOvX8U=
-bitbucket.org/taubyte/http v0.3.0/go.mod h1:H/esMxzWu/vcB5WyEcTbS7Jz2uiBGSDijZOYXAvk0dg=
-bitbucket.org/taubyte/kvdb v0.2.1 h1:xiBR9wOhL2VooyG4UyD33i7D1GKBe9F4eQOmzUw5u0M=
-bitbucket.org/taubyte/kvdb v0.2.1/go.mod h1:YB/PN/zCfb7AYsxsN6xvQzOz3pORDIljCT7Ldb1hW2o=
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 cloud.google.com/go v0.31.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 cloud.google.com/go v0.34.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
@@ -524,8 +520,6 @@ github.com/ipfs/go-ds-badger v0.2.1/go.mod h1:Tx7l3aTph3FMFrRS838dcSJh+jjA7cX9Dr
 github.com/ipfs/go-ds-badger v0.2.3/go.mod h1:pEYw0rgg3FIrywKKnL+Snr+w/LjJZVMTBRn4FS6UHUk=
 github.com/ipfs/go-ds-badger v0.3.0 h1:xREL3V0EH9S219kFFueOYJJTcjgNSZ2HY1iSvN7U1Ro=
 github.com/ipfs/go-ds-badger v0.3.0/go.mod h1:1ke6mXNqeV8K3y5Ak2bAA0osoTfmxUdupVCGm4QUIek=
-github.com/ipfs/go-ds-crdt v0.3.10 h1:DFllmN6SY/GNOaMqcOH5JPebVcgiUWJqjBBE011Qrso=
-github.com/ipfs/go-ds-crdt v0.3.10/go.mod h1:ApWe15VMBudLcjJpel+7/PMhX1JwPFw28XGYa7jzCX8=
 github.com/ipfs/go-ds-leveldb v0.0.1/go.mod h1:feO8V3kubwsEF22n0YRQCffeb79OOYIykR4L04tMOYc=
 github.com/ipfs/go-ds-leveldb v0.4.1/go.mod h1:jpbku/YqBSsBc1qgME8BkWS4AxzF2cEu1Ii2r79Hh9s=
 github.com/ipfs/go-ds-leveldb v0.4.2/go.mod h1:jpbku/YqBSsBc1qgME8BkWS4AxzF2cEu1Ii2r79Hh9s=
