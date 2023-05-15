@@ -4,8 +4,6 @@ go 1.19
 
 replace bitbucket.org/taubyte/p2p => ../p2p
 
-replace bitbucket.org/taubyte/go-specs => ../go-specs
-
 // Taubyte Direct Imports
 require (
 	bitbucket.org/taubyte/p2p v0.5.3
