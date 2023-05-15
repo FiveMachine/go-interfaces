@@ -2,13 +2,13 @@ module github.com/taubyte/go-interfaces
 
 go 1.19
 
-replace bitbucket.org/taubyte/p2p => ../p2p
+replace github.com/ipfs/go-block-format => github.com/ipfs/go-block-format v0.1.1
 
 // Taubyte Direct Imports
 require (
-	bitbucket.org/taubyte/p2p v0.5.3
+	bitbucket.org/taubyte/p2p v0.6.1-pre
 	github.com/taubyte/go-simple-container v0.4.2
-	github.com/taubyte/go-specs v0.10.0
+	github.com/taubyte/go-specs v0.10.2-pre
 	github.com/taubyte/http v0.9.0
 	github.com/taubyte/utils v0.1.5
 )
