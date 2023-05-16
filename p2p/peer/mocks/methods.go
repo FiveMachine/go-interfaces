@@ -97,3 +97,7 @@ func (m *mockNode) Context() context.Context {
 func (m *mockReadSeekCloser) Close() error {
 	return nil
 }
+
+func (m *mockReadSeekCloser) Seek(offset int64, whence int) (int64, error) {
+	return 0, nil
+}
