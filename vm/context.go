@@ -23,4 +23,7 @@ type Context interface {
 
 	// Commit returns the commit id used by this resource execution pipeline.
 	Commit() string
+
+	// Clone clones the VM.Context with a new go context
+	Clone(context.Context) Context
 }

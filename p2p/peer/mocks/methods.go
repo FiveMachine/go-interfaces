@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/ipfs/boxo/blockstore"
 	"github.com/ipfs/go-cid"
 	mc "github.com/multiformats/go-multicodec"
 	mh "github.com/multiformats/go-multihash"
@@ -83,13 +84,16 @@ func (m *mockNode) DeleteFile(id string) error {
 	return nil
 }
 
+func (m *mockNode) DAG() peer.IPFSLitePeer {
+	return &mockedDag{}
+}
+
 func (m *mockNode) Close() {
 	for k := range m.mapDef {
 		delete(m.mapDef, k)
 	}
 
 }
-
 func (m *mockNode) Context() context.Context {
 	return m.context
 }
@@ -100,4 +104,12 @@ func (m *mockReadSeekCloser) Close() error {
 
 func (m *mockReadSeekCloser) Seek(offset int64, whence int) (int64, error) {
 	return 0, nil
+}
+
+func (m *mockedDag) BlockStore() blockstore.Blockstore {
+	return &mockedBlockStore{}
+}
+
+func (m *mockedBlockStore) Has(context.Context, cid.Cid) (bool, error) {
+	return false, nil
 }

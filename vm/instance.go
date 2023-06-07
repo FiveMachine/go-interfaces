@@ -16,17 +16,8 @@ type Instance interface {
 	// Close will close the Instance
 	Close() error
 
-	// Load will Load the runtime with the host module.
-	Load(*HostModuleDefinitions) error
-
-	// Attach will attach plugins to the module instance
-	Attach(Plugin) (PluginInstance, ModuleInstance, error)
-
-	// Module will instantiate the module instance
-	Module(name string) (ModuleInstance, error)
-
-	// Expose returns a HostModule with the given name
-	Expose(name string) (HostModule, error)
+	// Runtime returns a new Function Instance Runtime
+	Runtime(*HostModuleDefinitions) (Runtime, error)
 
 	// Filesystem returns the filesystem used by the given Instance.
 	Filesystem() afero.Fs
@@ -36,6 +27,16 @@ type Instance interface {
 
 	// Stderr returns the Reader interface of stderr
 	Stderr() io.Reader
+}
+
+type Runtime interface {
+	Module(name string) (ModuleInstance, error)
+	Expose(name string) (HostModule, error)
+	Attach(plugin Plugin) (PluginInstance, ModuleInstance, error)
+	Stdout() io.Reader
+	Stderr() io.Reader
+
+	Close() error
 }
 
 // FunctionDefinition is a WebAssembly function exported in a module.

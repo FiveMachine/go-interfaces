@@ -14,7 +14,7 @@ type FunctionContext struct {
 
 type Function interface {
 	// Instantiate creates a Function instance for the given Function
-	Instantiate(ctx FunctionContext, branch, commit string) (sdk FunctionInstance, err error)
+	Instantiate(ctx FunctionContext, branch, commit string) (sdk FunctionInstance, runtime vm.Runtime, err error)
 	// Verbose assigns the verbose variable to the Function, used for debugging
 	Verbose() bool
 }

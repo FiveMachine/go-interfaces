@@ -5,8 +5,7 @@ import (
 	"errors"
 	"fmt"
 
-	"bitbucket.org/taubyte/p2p/keypair"
-	"bitbucket.org/taubyte/p2p/peer"
+	"github.com/taubyte/go-interfaces/p2p/keypair"
 	seerIface "github.com/taubyte/go-interfaces/services/seer"
 	"github.com/taubyte/utils/env"
 
@@ -111,11 +110,7 @@ func (config *GenericConfig) buildKeys(builder ConfigBuilder) error {
 	}
 
 	if len(config.SwarmKey) == 0 {
-		if Deployment == Taubyte {
-			config.SwarmKey = peer.DefaultSwarmKey()
-		} else if Deployment == Odo {
-			return errors.New("swarm key is needed. Generate one using spore-drive if you don't have one")
-		}
+		return errors.New("swarm key is needed. Generate one using spore-drive if you don't have one")
 	}
 
 	return nil
