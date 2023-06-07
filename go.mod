@@ -192,13 +192,6 @@ require (
 	nhooyr.io/websocket v1.8.7 // indirect
 )
 
-require (
-	github.com/ipfs/go-ipfs-blockstore v1.3.0
-	github.com/ipfs/go-ipfs-exchange-interface v0.2.0
-	github.com/libp2p/go-libp2p-crypto v0.1.0
-)
+require github.com/libp2p/go-libp2p-crypto v0.1.0
 
-require (
-	github.com/ipfs/boxo v0.8.1
-	github.com/ipfs/go-ipfs-ds-help v1.1.0 // indirect
-)
+require github.com/ipfs/boxo v0.8.1
