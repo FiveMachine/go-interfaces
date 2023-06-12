@@ -6,6 +6,11 @@ import (
 	"github.com/libp2p/go-libp2p/core/network"
 )
 
+type Body map[string]interface{}
+
+type Stream network.Stream
+type StreamHandler func(Stream)
+
 type Connection interface {
 	io.Closer
 	network.ConnSecurity

@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"os"
 
 	"github.com/taubyte/go-interfaces/p2p/keypair"
 	seerIface "github.com/taubyte/go-interfaces/services/seer"
-	"github.com/taubyte/utils/env"
 
 	spec "github.com/taubyte/go-specs/common"
 )
@@ -87,10 +87,12 @@ func (config *GenericConfig) buildP2P(builder ConfigBuilder) {
 			config.P2PAnnounce = []string{fmt.Sprintf(listenAddrFmt, builder.DefaultP2PListenPort)}
 
 		} else {
-			listenAddrFmt, err := env.Get("TAUBYTE_P2P_LISTEN")
-			if err != nil {
+
+			listenAddrFmt := os.Getenv("TAUBYTE_P2P_LISTEN")
+			if len(listenAddrFmt) < 1 {
 				panic("No Address to announce")
 			}
+
 			config.P2PAnnounce = []string{fmt.Sprintf(listenAddrFmt, builder.DefaultP2PListenPort)}
 		}
 	}
@@ -118,11 +120,10 @@ func (config *GenericConfig) buildKeys(builder ConfigBuilder) error {
 
 func (config *GenericConfig) buildLocation(builder ConfigBuilder) error {
 	if config.Location == nil {
-		_locationJSON, err := env.Get("TAUBYTE_GEO_LOCATION")
-		if err == nil {
+		_locationJSON := os.Getenv("TAUBYTE_GEO_LOCATION")
+		if len(_locationJSON) < 1 {
 			config.Location = &seerIface.Location{}
-			err = json.Unmarshal([]byte(_locationJSON), config.Location)
-			if err != nil {
+			if err := json.Unmarshal([]byte(_locationJSON), config.Location); err != nil {
 				return fmt.Errorf("parsing location failed with: %s", err)
 			}
 		}

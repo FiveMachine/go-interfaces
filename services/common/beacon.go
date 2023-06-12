@@ -9,6 +9,8 @@ import (
 	"github.com/taubyte/go-interfaces/services/seer"
 )
 
+// TODO: Everything in common should be in its own repo maybe Build-Config/Odo-Config
+
 type seerBeaconConfig struct {
 	serviceMeta map[string]string
 }

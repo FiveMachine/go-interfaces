@@ -2,13 +2,13 @@ package common
 
 import (
 	"github.com/taubyte/go-interfaces/p2p/peer"
+	"github.com/taubyte/go-interfaces/services/http"
 	seerIface "github.com/taubyte/go-interfaces/services/seer"
-	httplib "github.com/taubyte/http"
 )
 
 type GenericConfig struct {
 	Node         peer.Node
-	Http         httplib.Service
+	Http         http.Service
 	ClientNode   peer.Node
 	DVPrivateKey []byte
 	DVPublicKey  []byte

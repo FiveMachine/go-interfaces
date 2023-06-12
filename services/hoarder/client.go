@@ -1,11 +1,11 @@
 package hoarder
 
 import (
-	"bitbucket.org/taubyte/p2p/streams/command/response"
+	"github.com/taubyte/go-interfaces/p2p/streams"
 )
 
 type Client interface {
 	Rare() ([]string, error)
-	Stash(cid string) (response.Response, error)
+	Stash(cid string) (streams.Response, error)
 	List() ([]string, error)
 }

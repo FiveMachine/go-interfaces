@@ -76,5 +76,5 @@ func (h *GithubHook) Github() (*GithubHook, error) {
 }
 
 func (h *GithubHook) Bitbucket() (*BitbucketHook, error) {
-	return nil, errors.New("Not a Bitbucket hook!")
+	return nil, errors.New("not a Bitbucket hook")
 }

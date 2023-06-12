@@ -5,7 +5,7 @@ import (
 
 	"github.com/taubyte/go-interfaces/kvdb"
 	"github.com/taubyte/go-interfaces/services"
-	http "github.com/taubyte/http"
+	"github.com/taubyte/go-interfaces/services/http"
 )
 
 type Service interface {

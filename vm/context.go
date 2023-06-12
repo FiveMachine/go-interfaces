@@ -6,9 +6,6 @@ type Context interface {
 	// Context returns the go context of the function instance
 	Context() context.Context
 
-	// Close calls the go context cancel method.
-	Close() error
-
 	// Project returns the Taubyte project id
 	Project() string
 
