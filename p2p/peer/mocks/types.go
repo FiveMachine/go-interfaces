@@ -6,6 +6,7 @@ import (
 	"io"
 	"sync"
 
+	ipfslite "github.com/hsanjuan/ipfs-lite"
 	"github.com/ipfs/boxo/blockstore"
 	"github.com/taubyte/go-interfaces/p2p/peer"
 )
@@ -28,11 +29,7 @@ type mockReadSeekCloser struct {
 	io.Writer
 }
 
-type MockedDag interface{ peer.IPFSLitePeer }
-
-type mockedDag struct {
-	peer.IPFSLitePeer
-}
+type MockedDag interface{ *ipfslite.Peer }
 
 type MockedBlockStore interface{ blockstore.Blockstore }
 

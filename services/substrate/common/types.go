@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/ipfs/go-cid"
+	"github.com/taubyte/go-interfaces/moody"
 	"github.com/taubyte/go-interfaces/services"
 	"github.com/taubyte/go-interfaces/services/substrate/counters"
 	tns "github.com/taubyte/go-interfaces/services/tns"
@@ -19,6 +20,7 @@ type Service interface {
 	Branch() string
 	Tns() tns.Client
 	Context() context.Context
+	Logger() moody.Logger
 	CheckTns(MatchDefinition) ([]Serviceable, error)
 	Cache() Cache
 }

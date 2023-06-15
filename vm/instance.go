@@ -2,7 +2,6 @@ package vm
 
 import (
 	"io"
-	"time"
 
 	"context"
 
@@ -35,7 +34,7 @@ type Runtime interface {
 	Attach(plugin Plugin) (PluginInstance, ModuleInstance, error)
 	Stdout() io.Reader
 	Stderr() io.Reader
-
+	// TODO: Add Runtime Stat
 	Close() error
 }
 
@@ -85,16 +84,13 @@ type ModuleInstance interface {
 }
 
 type FunctionInstanceCommon interface {
-	// Timeout will assign a timeout the FunctionInstance
-	Timeout(timeout time.Duration) FunctionInstance
-
 	// Cancel will cancel the context of the FunctionInstance
 	Cancel() error
 }
 
 type FunctionInstance interface {
 	FunctionInstanceCommon
-	Call(args ...interface{}) Return
+	Call(ctx context.Context, args ...interface{}) Return
 }
 
 type Return interface {

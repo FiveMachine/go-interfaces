@@ -1,5 +1,6 @@
 package patrick
 
+// TODO: Shouldn't JobStatus just be typed string?
 type JobStatus int
 
 const (

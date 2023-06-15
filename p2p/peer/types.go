@@ -6,13 +6,8 @@ import (
 	"time"
 
 	ipfslite "github.com/hsanjuan/ipfs-lite"
-	"github.com/ipfs/boxo/blockservice"
-	blockstore "github.com/ipfs/boxo/blockstore"
-	exchange "github.com/ipfs/boxo/exchange"
-	ufsio "github.com/ipfs/boxo/ipld/unixfs/io"
 	"github.com/ipfs/go-cid"
 	"github.com/ipfs/go-datastore"
-	ipld "github.com/ipfs/go-ipld-format"
 	pubsub "github.com/libp2p/go-libp2p-pubsub"
 	"github.com/libp2p/go-libp2p/config"
 	"github.com/libp2p/go-libp2p/core/discovery"
@@ -32,7 +27,7 @@ type Node interface {
 	BootstrapPeers() []peer.AddrInfo
 	Close()
 	Context() context.Context
-	DAG() IPFSLitePeer
+	DAG() *ipfslite.Peer
 	DeleteFile(id string) error
 	Discovery() discovery.Discovery
 	Done() <-chan struct{}
@@ -63,15 +58,4 @@ type PeeringService interface {
 	Stop() error
 	AddPeer(peer.AddrInfo)
 	RemovePeer(peer.ID)
-}
-
-type IPFSLitePeer interface {
-	AddFile(ctx context.Context, r io.Reader, params *ipfslite.AddParams) (ipld.Node, error)
-	BlockService() blockservice.BlockService
-	BlockStore() blockstore.Blockstore
-	Bootstrap(peers []peer.AddrInfo)
-	Exchange() exchange.Interface
-	GetFile(ctx context.Context, c cid.Cid) (ufsio.ReadSeekCloser, error)
-	HasBlock(ctx context.Context, c cid.Cid) (bool, error)
-	Session(ctx context.Context) ipld.NodeGetter
 }

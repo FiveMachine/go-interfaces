@@ -121,7 +121,7 @@ func (config *GenericConfig) buildKeys(builder ConfigBuilder) error {
 func (config *GenericConfig) buildLocation(builder ConfigBuilder) error {
 	if config.Location == nil {
 		_locationJSON := os.Getenv("TAUBYTE_GEO_LOCATION")
-		if len(_locationJSON) < 1 {
+		if len(_locationJSON) > 0 {
 			config.Location = &seerIface.Location{}
 			if err := json.Unmarshal([]byte(_locationJSON), config.Location); err != nil {
 				return fmt.Errorf("parsing location failed with: %s", err)

@@ -17,10 +17,10 @@ type Service interface {
 	Http() http.Service
 	// Vm Returns the  VM service attached to the Substrate
 	Vm() vm.Service
-	// Tns returns the Tns client attached to the Substrate
-	Tns() tns.Client
 	// Logger returns the logger for the Substrate
 	Logger() moody.Logger
+	// Tns returns the Tns client attached to the Substrate
+	Tns() tns.Client
 	// Branch returns the branch the Substrate listens to
 	Branch() string
 	// Counter returns the counter service attached to the Substrate s

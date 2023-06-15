@@ -42,11 +42,11 @@ func NewRaw() []byte {
 }
 
 func LoadRaw(keyPath string) ([]byte, error) {
-	_, err := os.Stat(keyPath)
-	if err == nil {
-		return ioutil.ReadFile(keyPath)
+	if _, err := os.Stat(keyPath); err != nil {
+		return nil, err
 	}
-	return nil, err
+
+	return ioutil.ReadFile(keyPath)
 }
 
 func Save(priv crypto.PrivKey, keyPath string) error {
@@ -54,6 +54,7 @@ func Save(priv crypto.PrivKey, keyPath string) error {
 	if err == nil {
 		err = ioutil.WriteFile(keyPath, data, 0400)
 	}
+
 	return err
 }
 
@@ -72,6 +73,7 @@ func Load(keyPath string) (crypto.PrivKey, error) {
 			}
 		}
 	}
+
 	return nil, err
 }
 
@@ -80,22 +82,20 @@ func LoadRawFromEnv() []byte {
 	key64, ok := os.LookupEnv("TAUBYTE_KEY")
 	if ok {
 		key, err := base64.StdEncoding.DecodeString(key64)
-		if err != nil {
-			return nil
-		} else {
+		if err == nil {
 			return key
 		}
-	} else {
-		return nil
 	}
+
+	return nil
 }
 
 // Read key from ENV. key must be encoded in base64
 func LoadRawFromString(key64 string) []byte {
 	key, err := base64.StdEncoding.DecodeString(key64)
-	if err != nil {
-		return nil
-	} else {
+	if err == nil && key != nil {
 		return key
 	}
+
+	return nil
 }

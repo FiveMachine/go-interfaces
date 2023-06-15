@@ -77,7 +77,7 @@ type Service interface {
 	Stop()
 	Wait() error
 	Error() error
-	/********************************/
+
 	GET(*RouteDefinition)
 	PUT(*RouteDefinition)
 	POST(*RouteDefinition)
@@ -116,16 +116,13 @@ type HeadlessAssetsDefinition struct {
 }
 
 type AssetsDefinition struct {
-	Host                  string
-	Path                  string
-	Vars                  Variables
-	Scope                 []string
-	Auth                  RouteAuthHandler
-	FileSystem            afero.Fs
-	Directory             string
-	SinglePageApplication bool
+	Host  string
+	Path  string
+	Vars  Variables
+	Scope []string
+	Auth  RouteAuthHandler
 
-	BeforeServe func(w http.ResponseWriter)
+	HeadlessAssetsDefinition
 }
 
 type LowLevelDefinition struct {

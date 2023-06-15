@@ -53,8 +53,7 @@ func (cnf *GenericConfig) Parse(ctx *cli.Context) ([]byte, error) {
 			cnf.Verbose = _verbose
 		}
 
-		err = yaml.Unmarshal(data, &cnf)
-		if err != nil {
+		if err = yaml.Unmarshal(data, &cnf); err != nil {
 			return nil, fmt.Errorf("yaml unmarshal in GenericConfig failed with: %s", err)
 		}
 
@@ -79,8 +78,7 @@ func (cnf *GenericConfig) Parse(ctx *cli.Context) ([]byte, error) {
 			}
 		}
 
-		err = cnf.DVKeyHandler()
-		if err != nil {
+		if err = cnf.DVKeyHandler(); err != nil {
 			return nil, err
 		}
 
@@ -122,26 +120,22 @@ func (_cnf *GenericConfig) String() string {
 func (cnf *GenericConfig) DVKeyHandler() error {
 	var err error
 
-	err = cnf.validateKeys()
-	if err != nil {
+	if err = cnf.validateKeys(); err != nil {
 		return err
 	}
 
 	// Private Key
-	cnf.DVPrivateKey, err = os.ReadFile(cnf.Domains.Key.Private)
-	if err != nil {
+	if cnf.DVPrivateKey, err = os.ReadFile(cnf.Domains.Key.Private); err != nil {
 		return fmt.Errorf("reading private key `%s` failed with: %s", cnf.Domains.Key.Private, err)
 	}
 
 	// Public Key
 	if cnf.Domains.Key.Public != "" {
-		cnf.DVPublicKey, err = os.ReadFile(cnf.Domains.Key.Public)
-		if err != nil {
+		if cnf.DVPublicKey, err = os.ReadFile(cnf.Domains.Key.Public); err != nil {
 			return fmt.Errorf("reading public key `%s` failed with: %s", cnf.Domains.Key.Public, err)
 		}
 	} else {
-		cnf.DVPublicKey, err = generatePublicKey(cnf.DVPrivateKey)
-		if err != nil {
+		if cnf.DVPublicKey, err = generatePublicKey(cnf.DVPrivateKey); err != nil {
 			return fmt.Errorf("generating public key failed with: %s", err)
 		}
 	}
