@@ -46,7 +46,7 @@ func LoadRaw(keyPath string) ([]byte, error) {
 		return nil, err
 	}
 
-	return ioutil.ReadFile(keyPath)
+	return os.ReadFile(keyPath)
 }
 
 func Save(priv crypto.PrivKey, keyPath string) error {
