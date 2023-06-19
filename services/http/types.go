@@ -31,7 +31,7 @@ type Context interface {
 
 	Body() []byte
 	SetBody([]byte)
-
+	ParseBody(interface{}) error
 	GetStringVariable(key string) (string, error)
 	GetStringArrayVariable(key string) ([]string, error)
 	GetStringMapVariable(key string) (map[string]interface{}, error)
