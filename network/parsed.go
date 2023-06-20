@@ -6,9 +6,3 @@ type ParsedNetwork struct {
 	Network Network
 	Shapes  Shapes
 }
-
-type Key struct {
-	User  string
-	Pem   []string `yaml:"files"`
-	Value string
-}
