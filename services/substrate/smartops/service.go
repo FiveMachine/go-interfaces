@@ -32,9 +32,6 @@ type SmartOpEventCaller interface {
 	Type() uint32
 	Application() string
 	Project() (cid.Cid, error)
-
-	// vm/plugins/taubyte/event.*Event
-	Event() interface{}
 }
 
 // Util is the node utilities used by the smartOps

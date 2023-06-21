@@ -52,4 +52,5 @@ type Storage interface {
 	Kvdb() kvdb.KVDB
 	ContextConfig() Context
 	UpdateCapacity(size uint64)
+	Config() *structureSpec.Storage
 }

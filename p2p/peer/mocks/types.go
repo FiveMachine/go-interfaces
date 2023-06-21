@@ -6,12 +6,12 @@ import (
 	"io"
 	"sync"
 
+	ipfslite "github.com/hsanjuan/ipfs-lite"
+	"github.com/ipfs/boxo/blockstore"
 	"github.com/taubyte/go-interfaces/p2p/peer"
 )
 
-type MockedNode interface {
-	peer.Node
-}
+type MockedNode interface{ peer.Node }
 
 type mockNode struct {
 	mapDef map[string][]byte
@@ -21,12 +21,16 @@ type mockNode struct {
 	contextC context.CancelFunc
 }
 
-type MockedReadSeekCloser interface {
-	peer.ReadSeekCloser
-}
+type MockedReadSeekCloser interface{ peer.ReadSeekCloser }
 
 type mockReadSeekCloser struct {
 	*bytes.Buffer
 	io.Seeker
 	io.Writer
 }
+
+type MockedDag interface{ *ipfslite.Peer }
+
+type MockedBlockStore interface{ blockstore.Blockstore }
+
+type mockedBlockStore struct{ blockstore.Blockstore }

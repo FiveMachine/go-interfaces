@@ -1,14 +1,14 @@
 package substrate
 
 import (
-	moody "github.com/taubyte/go-interfaces/moody"
+	"github.com/taubyte/go-interfaces/moody"
 	"github.com/taubyte/go-interfaces/services"
+	"github.com/taubyte/go-interfaces/services/http"
 	"github.com/taubyte/go-interfaces/services/substrate/counters"
 	"github.com/taubyte/go-interfaces/services/substrate/p2p"
 	smartOps "github.com/taubyte/go-interfaces/services/substrate/smartops"
 	"github.com/taubyte/go-interfaces/services/tns"
 	"github.com/taubyte/go-interfaces/vm"
-	http "github.com/taubyte/http"
 )
 
 type Service interface {

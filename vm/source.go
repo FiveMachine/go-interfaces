@@ -30,16 +30,4 @@ type Source interface {
 	Module(ctx Context, name string) (SourceModule, error)
 }
 
-type SourceModule interface {
-	// Source returns the raw data of the source
-	Source() []byte
-
-	// Imports returns functions, and memories required for instantiation
-	Imports() []string
-
-	// Imports returns functions, and memories for the specific module.
-	ImportsByModule(name string) []string
-
-	// ImportsFunction returns a boolean based on existence of a function in given module.
-	ImportsFunction(module, name string) bool
-}
+type SourceModule []byte

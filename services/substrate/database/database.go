@@ -7,4 +7,5 @@ type Database interface {
 	DBContext() Context
 	SetConfig(*structureSpec.Database)
 	Close()
+	Config() *structureSpec.Database
 }

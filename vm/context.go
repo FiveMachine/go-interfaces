@@ -6,9 +6,6 @@ type Context interface {
 	// Context returns the go context of the function instance
 	Context() context.Context
 
-	// Close calls the go context cancel method.
-	Close() error
-
 	// Project returns the Taubyte project id
 	Project() string
 
@@ -23,4 +20,7 @@ type Context interface {
 
 	// Commit returns the commit id used by this resource execution pipeline.
 	Commit() string
+
+	// Clone clones the VM.Context with a new go context
+	Clone(context.Context) Context
 }

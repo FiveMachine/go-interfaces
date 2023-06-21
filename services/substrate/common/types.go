@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/ipfs/go-cid"
-	moody "github.com/taubyte/go-interfaces/moody"
+	"github.com/taubyte/go-interfaces/moody"
 	"github.com/taubyte/go-interfaces/services"
 	"github.com/taubyte/go-interfaces/services/substrate/counters"
 	tns "github.com/taubyte/go-interfaces/services/tns"

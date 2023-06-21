@@ -5,6 +5,7 @@ import (
 	"io"
 	"time"
 
+	ipfslite "github.com/hsanjuan/ipfs-lite"
 	"github.com/ipfs/go-cid"
 	"github.com/ipfs/go-datastore"
 	pubsub "github.com/libp2p/go-libp2p-pubsub"
@@ -12,7 +13,6 @@ import (
 	"github.com/libp2p/go-libp2p/core/discovery"
 	"github.com/libp2p/go-libp2p/core/host"
 	"github.com/libp2p/go-libp2p/core/peer"
-	"github.com/taubyte/go-interfaces/p2p/ipfs"
 	"github.com/taubyte/utils/fs/dir"
 )
 
@@ -27,7 +27,7 @@ type Node interface {
 	BootstrapPeers() []peer.AddrInfo
 	Close()
 	Context() context.Context
-	DAG() ipfs.Peer
+	DAG() *ipfslite.Peer
 	DeleteFile(id string) error
 	Discovery() discovery.Discovery
 	Done() <-chan struct{}

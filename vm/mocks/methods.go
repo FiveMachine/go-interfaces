@@ -1,8 +1,8 @@
 package mocks
 
 import (
+	"context"
 	"errors"
-	"time"
 
 	"github.com/taubyte/go-interfaces/vm"
 )
@@ -51,15 +51,11 @@ func (m *mockModuleInstance) Function(name string) (vm.FunctionInstance, error) 
 	return &mockFunctionInstance{}, nil
 }
 
-func (m *mockFunctionInstance) Timeout(time.Duration) vm.FunctionInstance {
-	return m
-}
-
 func (m *mockFunctionInstance) Cancel() error {
 	return nil
 }
 
-func (m *mockFunctionInstance) Call(...interface{}) vm.Return {
+func (m *mockFunctionInstance) Call(context.Context, ...interface{}) vm.Return {
 	return &mockReturn{}
 }
 

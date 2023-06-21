@@ -60,4 +60,14 @@ type Serviceable interface {
 	Handle(data streams.Command) (time.Time, streams.Response, error)
 	Name() string
 	Close()
+	Config() *structureSpec.Function
+}
+
+type ServiceResource interface {
+	Application() string
+	Config() *structureSpec.Service
+	Context() context.Context
+	Project() (cid.Cid, error)
+	SmartOps(smartOps []string) (uint32, error)
+	Type() uint32
 }
