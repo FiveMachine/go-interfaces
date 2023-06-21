@@ -8,6 +8,7 @@ import (
 	"github.com/taubyte/go-interfaces/services/substrate/common"
 	"github.com/taubyte/go-interfaces/services/substrate/counters"
 	smartOps "github.com/taubyte/go-interfaces/services/substrate/smartops"
+	structureSpec "github.com/taubyte/go-specs/structure"
 )
 
 type Service interface {
@@ -20,8 +21,20 @@ type Service interface {
 	SmartOps() smartOps.Service
 }
 
+type Messaging interface {
+	Config() *structureSpec.Messaging
+}
+
 type Serviceable interface {
 	common.Serviceable
+	Config() *structureSpec.Function
 	HandleMessage(msg *pubsub.Message) (time.Time, error)
 	Name() string
+}
+
+type Channel interface {
+	Context() context.Context
+	SmartOps(smartOps []string) (uint32, error)
+	Type() uint32
+	Messaging
 }

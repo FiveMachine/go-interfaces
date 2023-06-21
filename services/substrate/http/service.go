@@ -8,6 +8,7 @@ import (
 	"github.com/taubyte/go-interfaces/services/substrate/common"
 	"github.com/taubyte/go-interfaces/services/substrate/counters"
 	smartOps "github.com/taubyte/go-interfaces/services/substrate/smartops"
+	structureSpec "github.com/taubyte/go-specs/structure"
 )
 
 type Service interface {
@@ -21,4 +22,14 @@ type Service interface {
 type Serviceable interface {
 	common.Serviceable
 	Handle(w goHttp.ResponseWriter, r *goHttp.Request, serv common.MatchDefinition) (time.Time, error)
+}
+
+type Function interface {
+	Serviceable
+	Config() *structureSpec.Function
+}
+
+type Website interface {
+	Serviceable
+	Config() *structureSpec.Website
 }
