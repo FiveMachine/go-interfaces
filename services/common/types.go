@@ -20,6 +20,8 @@ type GenericConfig struct {
 	PrivateKey []byte `yaml:"privatekey"`
 	SwarmKey   []byte `yaml:"swarmkey"`
 
+	Ports map[string]int
+
 	P2PListen   []string `yaml:"p2p-listen"`
 	P2PAnnounce []string `yaml:"p2p-announce"`
 
