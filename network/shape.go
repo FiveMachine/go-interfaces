@@ -3,6 +3,7 @@ package network
 type Shape struct {
 	Protocols []string `yaml:",omitempty"`
 	Ports     Ports    `yaml:",omitempty"`
+	Plugins   []string `yaml:",omitempty"`
 }
 
 type Ports struct {

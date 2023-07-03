@@ -15,7 +15,7 @@ type GenericConfig struct {
 
 	Root string
 
-	Services []string `yaml:"services"`
+	Protocols []string
 
 	PrivateKey []byte `yaml:"privatekey"`
 	SwarmKey   []byte `yaml:"swarmkey"`
@@ -41,6 +41,8 @@ type GenericConfig struct {
 
 	TLS     TLSConfig      `yaml:"tls"`
 	Domains HttpDomainInfo `yaml:"domains"`
+
+	Plugins []string
 }
 
 type TLSConfig struct {
