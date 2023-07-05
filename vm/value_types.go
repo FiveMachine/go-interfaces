@@ -1,7 +1,9 @@
 package vm
 
 import (
+	"context"
 	"fmt"
+	"reflect"
 )
 
 // ExternType classifies imports and exports with their respective types.
@@ -45,6 +47,31 @@ func ExternTypeName(et ExternType) string {
 
 // ValueType describes a numeric type used in Web Assembly 1.0 (20191205).
 type ValueType = byte
+
+var (
+	I32Type = reflect.TypeOf((*int32)(nil)).Elem()
+	I64Type = reflect.TypeOf((*int64)(nil)).Elem()
+	F32Type = reflect.TypeOf((*float32)(nil)).Elem()
+	F64Type = reflect.TypeOf((*float64)(nil)).Elem()
+
+	ContextType = reflect.TypeOf((*context.Context)(nil)).Elem()
+	ModuleType  = reflect.TypeOf((*Module)(nil)).Elem()
+)
+
+func ValueTypeToReflectType(v ValueType) reflect.Type {
+	switch v {
+	case ValueTypeI32:
+		return I32Type
+	case ValueTypeI64:
+		return I64Type
+	case ValueTypeF32:
+		return F32Type
+	case ValueTypeF64:
+		return F64Type
+	default:
+		return nil
+	}
+}
 
 const (
 	// ValueTypeI32 is a 32-bit integer.

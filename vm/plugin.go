@@ -6,9 +6,6 @@ type PluginInstance interface {
 
 	// Close will close the PluginInstance
 	Close() error
-
-	// LoadFactory will load a single Factory on the HostModule
-	LoadFactory(factory Factory, hm HostModule) error
 }
 
 type Factory interface {
@@ -29,4 +26,6 @@ type Plugin interface {
 
 	// Name returns the name of the Plugin
 	Name() string
+
+	Close() error
 }

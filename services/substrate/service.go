@@ -29,4 +29,6 @@ type Service interface {
 	SmartOps() smartOps.Service
 	// P2P returns the p2p service attached to the Substrate
 	P2P() p2p.Service
+
+	Orbitals() []vm.Plugin
 }

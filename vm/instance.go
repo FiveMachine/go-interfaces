@@ -80,7 +80,9 @@ type MutableGlobal interface {
 
 type ModuleInstance interface {
 	// Function returns a FunctionInstance of given name from the ModuleInstance
+	Functions() []FunctionDefinition
 	Function(name string) (FunctionInstance, error)
+	Memory() Memory
 }
 
 type FunctionInstanceCommon interface {
@@ -91,11 +93,15 @@ type FunctionInstanceCommon interface {
 type FunctionInstance interface {
 	FunctionInstanceCommon
 	Call(ctx context.Context, args ...interface{}) Return
+	RawCall(ctx context.Context, args ...uint64) ([]uint64, error)
 }
 
 type Return interface {
 	// Returns an error
 	Error() error
+
+	// Rets will returns the raw uint64 values of the call return
+	Rets() []uint64
 
 	// Reflect assigns the return values to the given args
 	Reflect(args ...interface{}) error

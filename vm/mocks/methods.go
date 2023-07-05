@@ -19,6 +19,10 @@ func (m *mockPlugin) New(instance vm.Instance) (vm.PluginInstance, error) {
 	return &mockPluginInstance{}, nil
 }
 
+func (m *mockPlugin) Close() error {
+	return nil
+}
+
 func (m *mockPlugin) Name() string {
 	return "mock"
 }
