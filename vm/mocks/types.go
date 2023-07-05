@@ -20,16 +20,24 @@ type MockedModuleInstance interface {
 	vm.ModuleInstance
 }
 
-type mockModuleInstance struct{}
+type mockModuleInstance struct {
+	vm.ModuleInstance
+}
+
+type MockedModule interface {
+	vm.Module
+}
 
 type MockedFunctionInstance interface {
 	vm.FunctionInstance
 }
 
-type mockFunctionInstance struct{}
+type mockFunctionInstance struct {
+	vm.FunctionInstance
+}
 
 type MockedReturn interface {
 	vm.Return
 }
 
-type mockReturn struct{}
+type mockReturn struct{ vm.Return }
