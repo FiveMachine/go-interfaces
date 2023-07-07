@@ -16,7 +16,7 @@ type GenericConfig struct {
 
 	Root string
 
-	Protocols []string
+	Protocols []string `yaml:"protocols"`
 
 	PrivateKey []byte `yaml:"privatekey"`
 	SwarmKey   []byte `yaml:"swarmkey"`
