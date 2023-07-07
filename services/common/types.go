@@ -7,6 +7,7 @@ import (
 )
 
 type GenericConfig struct {
+	Shape        string
 	Node         peer.Node
 	Http         http.Service
 	ClientNode   peer.Node

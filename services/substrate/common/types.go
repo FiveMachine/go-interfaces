@@ -23,6 +23,7 @@ type Service interface {
 	Logger() moody.Logger
 	CheckTns(MatchDefinition) ([]Serviceable, error)
 	Cache() Cache
+	Orbitals() []vm.Plugin
 }
 
 type Cache interface {
