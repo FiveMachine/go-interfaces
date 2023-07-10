@@ -7,6 +7,7 @@ import (
 )
 
 type GenericConfig struct {
+	Shape        string
 	Node         peer.Node
 	Http         http.Service
 	ClientNode   peer.Node
@@ -15,7 +16,7 @@ type GenericConfig struct {
 
 	Root string
 
-	Services []string `yaml:"services"`
+	Protocols []string `yaml:"protocols"`
 
 	PrivateKey []byte `yaml:"privatekey"`
 	SwarmKey   []byte `yaml:"swarmkey"`
@@ -41,6 +42,8 @@ type GenericConfig struct {
 
 	TLS     TLSConfig      `yaml:"tls"`
 	Domains HttpDomainInfo `yaml:"domains"`
+
+	Plugins []string
 }
 
 type TLSConfig struct {

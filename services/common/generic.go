@@ -155,11 +155,11 @@ func (cnf *GenericConfig) DVKeyHandler() error {
 4. No public key but runs monkey and node -> return an error
 */
 func (cnf *GenericConfig) validateKeys() error {
-	if slices.Contains(cnf.Services, "auth") && cnf.Domains.Key.Private == "" {
+	if slices.Contains(cnf.Protocols, "auth") && cnf.Domains.Key.Private == "" {
 		return errors.New("domains private key cannot be empty when running auth")
 	}
 
-	for _, srv := range cnf.Services {
+	for _, srv := range cnf.Protocols {
 		if (srv == "monkey" || srv == "node") && (cnf.Domains.Key.Public == "" && cnf.Domains.Key.Private == "") {
 			return errors.New("domains public key cannot be empty when running monkey or node")
 		}
