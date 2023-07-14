@@ -1,8 +1,13 @@
 package network
 
+import (
+	"github.com/taubyte/go-interfaces/services/common"
+)
+
 type Network struct {
-	Domain Domain
-	P2P    P2P
+	Domain   Domain
+	P2P      P2P
+	Identity common.Identity
 }
 
 type P2P struct {

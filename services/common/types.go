@@ -43,9 +43,18 @@ type GenericConfig struct {
 	TLS     TLSConfig      `yaml:"tls"`
 	Domains HttpDomainInfo `yaml:"domains"`
 
-	Plugins []string
+	Identity Identity
+	Plugins  []string
 }
 
+type Identity struct {
+	Client GithubOauth
+}
+
+type GithubOauth struct {
+	Id     string
+	Secret string
+}
 type TLSConfig struct {
 	Certificate string `yaml:"certificate"`
 	Key         string `yaml:"key"`
