@@ -3,7 +3,7 @@ package billing
 import (
 	"github.com/taubyte/go-interfaces/kvdb"
 	"github.com/taubyte/go-interfaces/services"
-	"github.com/taubyte/go-interfaces/services/http"
+	http "github.com/taubyte/http"
 )
 
 type Service interface {

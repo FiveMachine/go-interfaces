@@ -70,8 +70,3 @@ const (
 	// See https://www.w3.org/TR/2019/REC-wasm-core-1-20191205/#grow-mem
 	MemoryLimitPages = uint32(65536)
 )
-
-// Config sets configuration of the VM service
-type Config struct {
-	MemoryLimitPages uint32 // should default to MemoryLimitPages
-}

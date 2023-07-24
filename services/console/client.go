@@ -1,8 +1,8 @@
 package console
 
-import "github.com/taubyte/go-interfaces/p2p/streams"
+import "github.com/taubyte/p2p/streams/command"
 
-type Injection func(streams.Body)
+type Injection func(command.Body)
 
 type Client interface {
 	Close()

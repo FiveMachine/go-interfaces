@@ -5,20 +5,15 @@ import (
 	"time"
 
 	pubsub "github.com/libp2p/go-libp2p-pubsub"
-	"github.com/taubyte/go-interfaces/services/substrate/common"
-	"github.com/taubyte/go-interfaces/services/substrate/counters"
-	smartOps "github.com/taubyte/go-interfaces/services/substrate/smartops"
+	"github.com/taubyte/go-interfaces/services/substrate/components"
 	structureSpec "github.com/taubyte/go-specs/structure"
 )
 
 type Service interface {
-	common.Service
+	components.ServiceComponent
 	Subscribe(projectId, appId, channel string) error
 	Publish(ctx context.Context, projectId, appId, channel string, data []byte) error
 	WebSocketURL(projectId, appId, channel string) (string, error)
-
-	Counter() counters.Service
-	SmartOps() smartOps.Service
 }
 
 type Messaging interface {
@@ -26,7 +21,7 @@ type Messaging interface {
 }
 
 type Serviceable interface {
-	common.Serviceable
+	components.Serviceable
 	Config() *structureSpec.Function
 	HandleMessage(msg *pubsub.Message) (time.Time, error)
 	Name() string

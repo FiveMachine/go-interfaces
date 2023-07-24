@@ -6,10 +6,9 @@ import (
 
 	"github.com/ipfs/go-cid"
 	"github.com/taubyte/go-interfaces/kvdb"
-	peer "github.com/taubyte/go-interfaces/p2p/peer"
-	"github.com/taubyte/go-interfaces/services"
-	smartOps "github.com/taubyte/go-interfaces/services/substrate/smartops"
+	"github.com/taubyte/go-interfaces/services/substrate/components"
 	structureSpec "github.com/taubyte/go-specs/structure"
+	peer "github.com/taubyte/p2p/peer"
 )
 
 type Context struct {
@@ -27,15 +26,12 @@ type Meta interface {
 }
 
 type Service interface {
-	services.Service
-
+	components.ServiceComponent
 	Storages() map[string]Storage
 	Get(context Context) (Storage, error)
 	Storage(context Context) (Storage, error)
 	Add(r io.Reader) (cid.Cid, error)
 	GetFile(context.Context, cid.Cid) (peer.ReadSeekCloser, error)
-
-	SmartOps() smartOps.Service
 }
 
 type Storage interface {

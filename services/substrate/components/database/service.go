@@ -4,16 +4,14 @@ import (
 	"context"
 
 	"github.com/taubyte/go-interfaces/moody"
-	"github.com/taubyte/go-interfaces/services"
-	smartOps "github.com/taubyte/go-interfaces/services/substrate/smartops"
+	"github.com/taubyte/go-interfaces/services/substrate/components"
 )
 
 type Service interface {
-	services.Service
+	components.ServiceComponent
 	Database(context Context) (Database, error)
 	Context() context.Context
 	Logger() moody.Logger
 	Databases() map[string]Database
 	Global(projectID string) (Database, error)
-	SmartOps() smartOps.Service
 }

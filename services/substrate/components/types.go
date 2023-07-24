@@ -1,29 +1,16 @@
-package common
+package components
 
 import (
-	"context"
-
 	"github.com/ipfs/go-cid"
-	"github.com/taubyte/go-interfaces/moody"
-	"github.com/taubyte/go-interfaces/services"
-	"github.com/taubyte/go-interfaces/services/substrate/counters"
+	"github.com/taubyte/go-interfaces/services/substrate"
 	tns "github.com/taubyte/go-interfaces/services/tns"
-	"github.com/taubyte/go-interfaces/vm"
 	matcherSpec "github.com/taubyte/go-specs/matcher"
 )
 
-type Service interface {
-	services.Service
-	Dev() bool
-	Vm() vm.Service
-	Verbose() bool
-	Branch() string
-	Tns() tns.Client
-	Context() context.Context
-	Logger() moody.Logger
+type ServiceComponent interface {
+	substrate.Service
 	CheckTns(MatchDefinition) ([]Serviceable, error)
 	Cache() Cache
-	Orbitals() []vm.Plugin
 }
 
 type Cache interface {
@@ -43,8 +30,7 @@ type Serviceable interface {
 	Id() string
 	Ready() error
 	Close()
-	Counter() counters.Service
-	Service() Service
+	Service() ServiceComponent
 }
 
 type MatchDefinition interface {
