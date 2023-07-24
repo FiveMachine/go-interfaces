@@ -5,7 +5,6 @@ go 1.19
 require (
 	github.com/ipfs/go-cid v0.4.1
 	github.com/ipfs/go-datastore v0.6.0
-	github.com/ipfs/go-log/v2 v2.5.1
 	github.com/libp2p/go-libp2p v0.27.1
 	github.com/libp2p/go-libp2p-core v0.20.1
 	github.com/libp2p/go-libp2p-pubsub v0.9.3
@@ -79,6 +78,7 @@ require (
 	github.com/ipfs/go-ipld-format v0.4.0 // indirect
 	github.com/ipfs/go-ipld-legacy v0.1.1 // indirect
 	github.com/ipfs/go-log v1.0.5 // indirect
+	github.com/ipfs/go-log/v2 v2.5.1 // indirect
 	github.com/ipfs/go-metrics-interface v0.0.1 // indirect
 	github.com/ipfs/go-peertaskqueue v0.8.1 // indirect
 	github.com/ipld/go-codec-dagpb v1.6.0 // indirect
