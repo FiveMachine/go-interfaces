@@ -2,7 +2,14 @@ package kvdb
 
 import (
 	"context"
+
+	"github.com/ipfs/go-log/v2"
 )
+
+type Factory interface {
+	New(logger log.StandardLogger, path string, rebroadcastIntervalSec int) (s KVDB, err error)
+	Close()
+}
 
 type KVDB interface {
 	// Get will retrieve the key indexed data
@@ -31,6 +38,8 @@ type KVDB interface {
 
 	// Sync syncs the KVDB key values
 	Sync(ctx context.Context, key string) error
+
+	Factory() Factory
 
 	// Closes the KVDB
 	Close()

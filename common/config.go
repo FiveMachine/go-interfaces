@@ -2,6 +2,8 @@ package common
 
 import (
 	"context"
+
+	"github.com/taubyte/go-interfaces/kvdb"
 )
 
 type CommonConfig struct {
@@ -17,6 +19,7 @@ type ServiceConfig struct {
 	PublicKey  []byte
 	PrivateKey []byte
 	SwarmKey   []byte
+	Databases  kvdb.Factory
 }
 
 type SimpleConfig struct {
