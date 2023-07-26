@@ -1,7 +1,7 @@
 package http
 
 import (
-	goHttp "net/http"
+	"net/http"
 	"time"
 
 	"github.com/taubyte/go-interfaces/services/substrate/components"
@@ -14,7 +14,7 @@ type Service interface {
 
 type Serviceable interface {
 	components.Serviceable
-	Handle(w goHttp.ResponseWriter, r *goHttp.Request, serv components.MatchDefinition) (time.Time, error)
+	Handle(w http.ResponseWriter, r *http.Request, serv components.MatchDefinition) (time.Time, error)
 }
 
 type Function interface {
