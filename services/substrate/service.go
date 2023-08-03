@@ -19,8 +19,6 @@ type Service interface {
 	Vm() vm.Service
 	// Tns returns the Tns client attached to the Substrate
 	Tns() tns.Client
-	// Branch returns the branch the Substrate listens to
-	Branch() string
 	// Counter returns the counter service attached to the Substrate s
 	Counter() CounterService
 	// SmartOps returns the smartops service attached to the Substrate
