@@ -27,3 +27,20 @@ func (s JobStatus) String() string {
 		return "Unknown"
 	}
 }
+
+func (s JobStatus) Unicode() string {
+	switch s {
+	case JobStatusFailed:
+		return "×"
+	case JobStatusOpen:
+		return "…"
+	case JobStatusLocked:
+		return "►"
+	case JobStatusSuccess:
+		return "✔"
+	case JobStatusCancelled:
+		return "■"
+	default:
+		return "？"
+	}
+}
