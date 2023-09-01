@@ -53,18 +53,16 @@ type Service interface {
 }
 
 type Serviceable interface {
-	components.Serviceable
+	components.FunctionServiceable
 	Handle(data *command.Command) (time.Time, response.Response, error)
 	Name() string
 	Close()
-	Config() *structureSpec.Function
 }
 
 type ServiceResource interface {
 	Application() string
 	Config() *structureSpec.Service
 	Context() context.Context
-	Project() (cid.Cid, error)
 	SmartOps(smartOps []string) (uint32, error)
 	Type() uint32
 }

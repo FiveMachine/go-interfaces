@@ -19,7 +19,7 @@ type Serviceable interface {
 
 type Function interface {
 	Serviceable
-	Config() *structureSpec.Function
+	components.FunctionServiceable
 }
 
 type Website interface {

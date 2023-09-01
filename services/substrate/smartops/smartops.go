@@ -2,15 +2,13 @@ package smartops
 
 import (
 	"context"
-
-	"github.com/ipfs/go-cid"
 )
 
 type EventCaller interface {
 	Context() context.Context
 	Type() uint32
 	Application() string
-	Project() (cid.Cid, error)
+	Project() string
 }
 
 type Instance interface {
