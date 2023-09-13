@@ -1,6 +1,7 @@
 package tns
 
 import (
+	"github.com/taubyte/go-interfaces/services"
 	structureSpec "github.com/taubyte/go-specs/structure"
 )
 
@@ -23,6 +24,7 @@ type Path interface {
 }
 
 type Client interface {
+	services.Client
 	Fetch(path Path) (Object, error)
 	Lookup(query Query) (interface{}, error)
 	Push(path []string, data interface{}) error

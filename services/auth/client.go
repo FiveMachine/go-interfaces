@@ -3,9 +3,12 @@ package auth
 import (
 	"crypto/tls"
 	"errors"
+
+	"github.com/taubyte/go-interfaces/services"
 )
 
 type Client interface {
+	services.Client
 	InjectStaticCertificate(domain string, data []byte) error
 	GetCertificate(domain string) ([]byte, error)
 	GetStaticCertificate(domain string) (*tls.Certificate, error)

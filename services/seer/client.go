@@ -1,5 +1,7 @@
 package seer
 
+import "github.com/taubyte/go-interfaces/services"
+
 type Geo interface {
 	All() ([]*Peer, error)
 	Set(location Location) error
@@ -12,6 +14,7 @@ type GeoBeacon interface {
 }
 
 type Client interface {
+	services.Client
 	Geo() Geo
 	Usage() Usage
 }

@@ -1,6 +1,9 @@
 package patrick
 
+import "github.com/taubyte/go-interfaces/services"
+
 type Client interface {
+	services.Client
 	Lock(jid string, eta uint32) error
 	IsLocked(jid string) (bool, error)
 	Unlock(jid string) error
