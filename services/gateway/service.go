@@ -1,10 +1,9 @@
-package auth
+package gateway
 
 import (
 	"github.com/taubyte/go-interfaces/services"
 )
 
 type Service interface {
-	services.DBService
-	services.GitHubAuth
+	services.HttpService
 }

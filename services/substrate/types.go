@@ -8,13 +8,11 @@ import (
 	"github.com/taubyte/go-interfaces/services/substrate/smartops"
 	"github.com/taubyte/go-interfaces/services/tns"
 	"github.com/taubyte/go-interfaces/vm"
-	http "github.com/taubyte/http"
+	"github.com/taubyte/p2p/streams/client"
 )
 
 type Service interface {
-	services.Service
-	// Http Returns the http service attached to the Substrate
-	Http() http.Service
+	services.HttpService
 	// Vm Returns the  VM service attached to the Substrate
 	Vm() vm.Service
 	// Tns returns the Tns client attached to the Substrate
@@ -28,6 +26,10 @@ type Service interface {
 	Dev() bool
 	Verbose() bool
 	Context() context.Context
+}
+
+type ProxyClient interface {
+	ProxyHTTP(host string, path string, method string, ops ...client.Option) (<-chan *client.Response, error)
 }
 
 type SmartOpsService interface {

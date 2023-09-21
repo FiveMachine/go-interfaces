@@ -1,6 +1,6 @@
 package seer
 
-// TODO: Probably better in specs
+// TODO: We repeat these string vars every where...
 const (
 	ServiceTypeUnknown   ServiceType = "unknown"
 	ServiceTypeHttp      ServiceType = "http"
@@ -15,4 +15,5 @@ const (
 	ServiceTypePatrick   ServiceType = "patrick"
 	ServiceTypeTns       ServiceType = "tns"
 	ServiceTypeQ         ServiceType = "q"
+	ServiceTypeGateway   ServiceType = "gateway"
 )

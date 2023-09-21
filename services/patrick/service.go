@@ -4,13 +4,11 @@ import (
 	"context"
 	"io"
 
-	"github.com/taubyte/go-interfaces/kvdb"
 	"github.com/taubyte/go-interfaces/services"
 )
 
 type Service interface {
-	services.Service
-	KV() kvdb.KVDB
+	services.DBService
 	NewGitRepository(provider string, repositoryId string, output io.Writer) (GitRepository, error)
 }
 
