@@ -15,6 +15,8 @@ type Service interface {
 type Serviceable interface {
 	components.Serviceable
 	Handle(w http.ResponseWriter, r *http.Request, serv components.MatchDefinition) (time.Time, error)
+	Provision() (Serviceable, error)
+	IsProvisioned() bool
 }
 
 type Function interface {
