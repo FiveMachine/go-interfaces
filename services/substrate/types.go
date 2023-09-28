@@ -2,6 +2,7 @@ package substrate
 
 import (
 	"context"
+	"io"
 
 	"github.com/taubyte/go-interfaces/services"
 	"github.com/taubyte/go-interfaces/services/substrate/counters"
@@ -30,6 +31,7 @@ type Service interface {
 
 type ProxyClient interface {
 	ProxyHTTP(host string, path string, method string, ops ...client.Option) (<-chan *client.Response, error)
+	io.Closer
 }
 
 type SmartOpsService interface {
