@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	crypto "github.com/libp2p/go-libp2p-core/crypto"
+	crypto "github.com/libp2p/go-libp2p/core/crypto"
 )
 
 func New() crypto.PrivKey {
