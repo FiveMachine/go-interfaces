@@ -35,38 +35,3 @@ func (s *InMemoryUserService) CreateUser(user *models.User) error {
 	return nil
 }
 
-func (s *InMemoryUserService) GetUserByID(id string) (*models.User, error) {
-	s.mu.Lock()
-	defer s.mu.Unlock()
-
-	user, exists := s.users[id]
-	if !exists {
-		return nil, errors.New("user not found")
-	}
-
-	return user, nil
-}
-
-func (s *InMemoryUserService) UpdateUser(user *models.User) error {
-	s.mu.Lock()
-	defer s.mu.Unlock()
-
-	if _, exists := s.users[user.ID]; !exists {
-		return errors.New("user not found")
-	}
-
-	s.users[user.ID] = user
-	return nil
-}
-
-func (s *InMemoryUserService) DeleteUser(id string) error {
-	s.mu.Lock()
-	defer s.mu.Unlock()
-
-	if _, exists := s.users[id]; !exists {
-		return errors.New("user not found")
-	}
-
-	delete(s.users, id)
-	return nil
-}
