@@ -3,7 +3,6 @@ package storage
 import (
 	"context"
 	"io"
-
 	"github.com/ipfs/go-cid"
 	"github.com/taubyte/go-interfaces/kvdb"
 	"github.com/taubyte/go-interfaces/services/substrate/components"
