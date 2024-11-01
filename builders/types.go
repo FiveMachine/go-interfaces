@@ -31,12 +31,24 @@ type Output interface {
 	Close() error
 }
 
+// Logs is an interface defining methods for handling log operations.
 type Logs interface {
+	// Embeds io.ReadCloser to allow reading and closing log data streams.
 	io.ReadCloser
+
+	// CopyTo copies log data to a given destination (dst), which implements io.Writer.
+	// Returns the number of bytes copied and an error if any occurs.
 	CopyTo(dst io.Writer) (int64, error)
+
+	// CopyFrom copies data from a source (src), which implements io.Reader, to the log.
+	// Returns the number of bytes copied and an error if any occurs.
 	CopyFrom(src io.Reader) (int64, error)
+
+	// FormatErr formats an error message according to the specified format and arguments.
+	// Returns an error containing the formatted message.
 	FormatErr(format string, args ...any) error
 }
+
 
 // CompressionMethod defines the method used to compress build Output of a Builder
 type CompressionMethod uint32
